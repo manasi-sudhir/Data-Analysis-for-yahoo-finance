@@ -35,3 +35,30 @@ def clean_intraday(df: pd.DataFrame) -> pd.DataFrame:
     df["is_price_outlier"] = ~df["current_price"].between(lower, upper)
 
     return df.reset_index(drop=True)
+
+def clean_daily(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+
+    df = df.copy()
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+    df = df.dropna(subset=["date"])
+    df = df.drop_duplicates(subset=["date"], keep="last")
+    df = df.sort_values("date").reset_index(drop=True)
+
+    for col in ["open", "high", "low", "close", "volume"]:
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    # A daily bar needs a valid close and non-negative volume to be usable
+    df = df.dropna(subset=["close"])
+    df = df[df["close"] > 0]
+    df["volume"] = df["volume"].clip(lower=0)
+
+    # High must be >= low, and both must bracket open/close - fix obviously
+    # swapped high/low (rare yfinance glitch), otherwise leave as-is
+    swapped = df["high"] < df["low"]
+    df.loc[swapped, ["high", "low"]] = df.loc[swapped, ["low", "high"]].values
+
+    df["date"] = df["date"].dt.strftime("%Y-%m-%d")
+    return df.reset_index(drop=True)
+
