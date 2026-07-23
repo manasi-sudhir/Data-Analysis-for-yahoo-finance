@@ -65,3 +65,46 @@ def init_db():
     )
     """)
 
+
+    # Processed / feature-engineered daily table
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS nvidia_daily_features (
+        date TEXT PRIMARY KEY,
+        ticker TEXT,
+        open REAL,
+        high REAL,
+        low REAL,
+        close REAL,
+        volume INTEGER,
+        daily_return REAL,
+        log_return REAL,
+        sma_20 REAL,
+        sma_50 REAL,
+        ema_12 REAL,
+        ema_26 REAL,
+        macd REAL,
+        macd_signal REAL,
+        macd_hist REAL,
+        rsi_14 REAL,
+        bb_mid REAL,
+        bb_upper REAL,
+        bb_lower REAL,
+        volatility_20 REAL,
+        volume_change_pct REAL,
+        momentum_10 REAL
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+def read_table(table_name: str) -> pd.DataFrame:
+    conn = get_connection()
+    try:
+        df = pd.read_sql_query(f"SELECT * FROM {table_name}", conn)
+    except pd.errors.DatabaseError:
+        df = pd.DataFrame()
+    conn.close()
+    return df
+
