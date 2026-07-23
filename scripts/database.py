@@ -143,4 +143,24 @@ def replace_table(df: pd.DataFrame, table_name: str):
     df.to_sql(table_name, conn, if_exists="replace", index=False)
     conn.close()
 
+def insert_live_snapshot(row: dict):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("""
+        INSERT INTO nvidia_stock_data (
+            timestamp, ticker, current_price, open_price, previous_close,
+            day_high, day_low, volume, market_cap, currency
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        row["timestamp"], row["ticker"], row["current_price"], row["open_price"],
+        row["previous_close"], row["day_high"], row["day_low"], row["volume"],
+        row["market_cap"], row["currency"]
+    ))
+    conn.commit()
+    conn.close()
+
+
+if __name__ == "__main__":
+    init_db()
+    print(f"Database ready at {DB_PATH}")
 
