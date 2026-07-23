@@ -108,3 +108,39 @@ def read_table(table_name: str) -> pd.DataFrame:
     conn.close()
     return df
 
+def read_table(table_name: str) -> pd.DataFrame:
+    conn = get_connection()
+    try:
+        df = pd.read_sql_query(f"SELECT * FROM {table_name}", conn)
+    except pd.errors.DatabaseError:
+        df = pd.DataFrame()
+    conn.close()
+    return df
+
+
+def upsert_daily_history(df: pd.DataFrame):
+    """Replace rows by date (primary key) so re-running is idempotent."""
+    if df.empty:
+        return
+    conn = get_connection()
+    cur = conn.cursor()
+    rows = df[["date", "ticker", "open", "high", "low", "close", "volume"]].values.tolist()
+    cur.executemany("""
+        INSERT INTO nvidia_daily_history (date, ticker, open, high, low, close, volume)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(date) DO UPDATE SET
+            open=excluded.open, high=excluded.high, low=excluded.low,
+            close=excluded.close, volume=excluded.volume, ticker=excluded.ticker
+    """, rows)
+    conn.commit()
+    conn.close()
+
+
+def replace_table(df: pd.DataFrame, table_name: str):
+    """Used for processed feature tables - simplest to fully rebuild each run
+    since they're derived data, not a growing log."""
+    conn = get_connection()
+    df.to_sql(table_name, conn, if_exists="replace", index=False)
+    conn.close()
+
+
