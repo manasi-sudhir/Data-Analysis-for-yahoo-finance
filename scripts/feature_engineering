@@ -21,3 +21,14 @@ def add_intraday_features(df: pd.DataFrame) -> pd.DataFrame:
     df["volume_zscore"] = (df["volume"] - vol_mean) / vol_std.replace(0, np.nan)
 
     return df
+
+def _rsi(close: pd.Series, period: int = 14) -> pd.Series:
+    delta = close.diff()
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+    rs = avg_gain / avg_loss.replace(0, np.nan)
+    rsi = 100 - (100 / (1 + rs))
+    return rsi
+
