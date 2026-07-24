@@ -32,3 +32,36 @@ def _rsi(close: pd.Series, period: int = 14) -> pd.Series:
     rsi = 100 - (100 / (1 + rs))
     return rsi
 
+def add_daily_features(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+
+    df = df.copy()
+    close = df["close"]
+
+    df["daily_return"] = close.pct_change() * 100
+    df["log_return"] = np.log(close / close.shift(1))
+
+    df["sma_20"] = close.rolling(20, min_periods=1).mean()
+    df["sma_50"] = close.rolling(50, min_periods=1).mean()
+    df["ema_12"] = close.ewm(span=12, adjust=False).mean()
+    df["ema_26"] = close.ewm(span=26, adjust=False).mean()
+
+    df["macd"] = df["ema_12"] - df["ema_26"]
+    df["macd_signal"] = df["macd"].ewm(span=9, adjust=False).mean()
+    df["macd_hist"] = df["macd"] - df["macd_signal"]
+
+    df["rsi_14"] = _rsi(close, 14)
+
+    bb_mid = close.rolling(20, min_periods=1).mean()
+    bb_std = close.rolling(20, min_periods=1).std()
+    df["bb_mid"] = bb_mid
+    df["bb_upper"] = bb_mid + 2 * bb_std
+    df["bb_lower"] = bb_mid - 2 * bb_std
+
+    df["volatility_20"] = df["log_return"].rolling(20, min_periods=2).std() * np.sqrt(252)
+    df["volume_change_pct"] = df["volume"].pct_change() * 100
+    df["momentum_10"] = close - close.shift(10)
+
+    return df
+
