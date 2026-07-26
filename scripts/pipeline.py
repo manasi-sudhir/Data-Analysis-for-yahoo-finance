@@ -29,3 +29,35 @@ def _should_refresh_daily_history() -> bool:
         return True
     return datetime.now() - _last_daily_refresh > timedelta(hours=DAILY_HISTORY_REFRESH_HOURS)
 
+ # 2. Daily history - heavier, only refresh periodically
+    if force_daily_refresh or _should_refresh_daily_history():
+        try:
+            daily_raw = fetch_daily_history()
+            database.upsert_daily_history(daily_raw)
+            _last_daily_refresh = datetime.now()
+            logger.info(f"Refreshed daily history: {len(daily_raw)} rows")
+        except Exception as e:
+            logger.error(f"Daily history fetch failed: {e}")
+
+    # 3 & 4. Clean + engineer features from whatever raw data now exists
+    try:
+        raw_intraday = database.read_table("nvidia_stock_data")
+        cleaned_intraday = clean_intraday(raw_intraday)
+        featured_intraday = add_intraday_features(cleaned_intraday)
+        database.replace_table(featured_intraday, "nvidia_intraday_features")
+
+        raw_daily = database.read_table("nvidia_daily_history")
+        cleaned_daily = clean_daily(raw_daily)
+        featured_daily = add_daily_features(cleaned_daily)
+        database.replace_table(featured_daily, "nvidia_daily_features")
+
+        logger.info(
+            f"Feature tables rebuilt: intraday={len(featured_intraday)} rows, "
+            f"daily={len(featured_daily)} rows"
+        )
+    except Exception as e:
+        logger.error(f"Cleaning/feature engineering step failed: {e}")
+
+
+if __name__ == "__main__":
+    run_pipeline(force_daily_refresh=True)
