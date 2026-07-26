@@ -34,3 +34,26 @@ def fetch_live_snapshot() -> dict:
         "currency": info.get("currency"),
     }
     return row
+
+def fetch_daily_history(period: str = DAILY_HISTORY_PERIOD) -> pd.DataFrame:
+    """Pulls daily OHLCV bars. Returned columns match nvidia_daily_history schema."""
+    stock = yf.Ticker(TICKER)
+    hist = stock.history(period=period, interval="1d")
+
+    if hist.empty:
+        logger.warning("yfinance returned no daily history data")
+        return pd.DataFrame(columns=["date", "ticker", "open", "high", "low", "close", "volume"])
+
+    hist = hist.reset_index()
+    hist["date"] = hist["Date"].dt.strftime("%Y-%m-%d")
+    hist["ticker"] = TICKER
+    hist = hist.rename(columns={
+        "Open": "open", "High": "high", "Low": "low",
+        "Close": "close", "Volume": "volume"
+    })
+    return hist[["date", "ticker", "open", "high", "low", "close", "volume"]]
+
+
+if __name__ == "__main__":
+    print(fetch_live_snapshot())
+    print(fetch_daily_history().tail())
