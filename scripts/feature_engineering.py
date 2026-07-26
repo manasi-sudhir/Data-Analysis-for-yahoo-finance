@@ -65,3 +65,5 @@ def add_daily_features(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
+if __name__ == "__main__":
+    print("Feature engineering module loaded successfully!")
