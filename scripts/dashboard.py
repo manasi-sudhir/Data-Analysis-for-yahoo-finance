@@ -71,3 +71,87 @@ if not intraday.empty:
 
 st.divider()
 
+# ---------------------------------------------------------------------------
+# Intraday chart
+# ---------------------------------------------------------------------------
+st.subheader("Intraday Price (live snapshots)")
+if not intraday.empty:
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=intraday["timestamp"], y=intraday["current_price"],
+        mode="lines", name="Price", line=dict(color="#76b900", width=2)
+    ))
+    fig.add_trace(go.Scatter(
+        x=intraday["timestamp"], y=intraday["rolling_mean_10"],
+        mode="lines", name="Rolling mean (10)", line=dict(color="orange", width=1, dash="dot")
+    ))
+    fig.update_layout(height=400, margin=dict(l=10, r=10, t=30, b=10),
+                       xaxis_title="Time", yaxis_title="Price (USD)")
+    st.plotly_chart(fig, use_container_width=True)
+else:
+    st.info("No intraday snapshots yet.")
+
+st.divider()
+
+# ---------------------------------------------------------------------------
+# Daily chart with technical indicators
+# ---------------------------------------------------------------------------
+st.subheader("Daily Price & Technical Indicators")
+if not daily.empty:
+    fig = make_subplots(
+        rows=3, cols=1, shared_xaxes=True, row_heights=[0.55, 0.2, 0.25],
+        vertical_spacing=0.04,
+        subplot_titles=("Price + Bollinger Bands + SMA/EMA", "RSI (14)", "MACD"),
+    )
+
+    fig.add_trace(go.Candlestick(
+        x=daily["date"], open=daily["open"], high=daily["high"],
+        low=daily["low"], close=daily["close"], name="OHLC"
+    ), row=1, col=1)
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["sma_20"], name="SMA 20",
+                              line=dict(color="blue", width=1)), row=1, col=1)
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["sma_50"], name="SMA 50",
+                              line=dict(color="purple", width=1)), row=1, col=1)
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["bb_upper"], name="BB Upper",
+                              line=dict(color="gray", width=1, dash="dot")), row=1, col=1)
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["bb_lower"], name="BB Lower",
+                              line=dict(color="gray", width=1, dash="dot"),
+                              fill="tonexty", fillcolor="rgba(128,128,128,0.08)"), row=1, col=1)
+
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["rsi_14"], name="RSI 14",
+                              line=dict(color="teal", width=1.5)), row=2, col=1)
+    fig.add_hline(y=70, line_dash="dash", line_color="red", row=2, col=1)
+    fig.add_hline(y=30, line_dash="dash", line_color="green", row=2, col=1)
+
+    fig.add_trace(go.Bar(x=daily["date"], y=daily["macd_hist"], name="MACD Hist",
+                          marker_color="lightgray"), row=3, col=1)
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["macd"], name="MACD",
+                              line=dict(color="blue", width=1)), row=3, col=1)
+    fig.add_trace(go.Scatter(x=daily["date"], y=daily["macd_signal"], name="Signal",
+                              line=dict(color="orange", width=1)), row=3, col=1)
+
+    fig.update_layout(height=800, xaxis_rangeslider_visible=False,
+                       margin=dict(l=10, r=10, t=40, b=10), legend=dict(orientation="h"))
+    st.plotly_chart(fig, use_container_width=True)
+else:
+    st.info("No daily history yet - click **Fetch now** to pull it.")
+
+st.divider()
+
+# ---------------------------------------------------------------------------
+# Raw / processed data tables
+# ---------------------------------------------------------------------------
+with st.expander("🔍 View processed intraday data"):
+    st.dataframe(intraday.tail(200).sort_values("timestamp", ascending=False), use_container_width=True)
+    st.download_button("Download intraday CSV", intraday.to_csv(index=False), "nvidia_intraday_features.csv")
+
+with st.expander("🔍 View processed daily data"):
+    st.dataframe(daily.sort_values("date", ascending=False), use_container_width=True)
+    st.download_button("Download daily CSV", daily.to_csv(index=False), "nvidia_daily_features.csv")
+
+# ---------------------------------------------------------------------------
+# Auto-refresh
+# ---------------------------------------------------------------------------
+if auto_refresh:
+    time.sleep(refresh_seconds)
+    st.rerun()
