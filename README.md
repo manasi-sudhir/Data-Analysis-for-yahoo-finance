@@ -76,9 +76,6 @@ three functions by time granularity:
 | `avg_volume` | Average daily trading volume that week |
 | `big_move_days` | Count of days that week where price moved more than 3% |
 
-Every feature here is deliberately kept explainable in one sentence -
-just differences, percentages, averages, and simple counts. No RSI, MACD,
-Bollinger Bands, volatility, log returns, or z-scores.
 
 ### 2.4 Data Analysis and Dashboard
 
