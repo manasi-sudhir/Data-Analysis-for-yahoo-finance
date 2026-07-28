@@ -58,10 +58,7 @@ def init_db():
         pct_change_from_prev_snapshot REAL,
         pct_change_from_open REAL,
         rolling_mean_10 REAL,
-        rolling_std_10 REAL,
-        rolling_mean_30 REAL,
-        day_range_pct REAL,
-        volume_zscore REAL
+        day_range_pct REAL
     )
     """)
 
@@ -77,21 +74,10 @@ def init_db():
         close REAL,
         volume INTEGER,
         daily_return REAL,
-        log_return REAL,
         sma_20 REAL,
         sma_50 REAL,
-        ema_12 REAL,
-        ema_26 REAL,
-        macd REAL,
-        macd_signal REAL,
-        macd_hist REAL,
-        rsi_14 REAL,
-        bb_mid REAL,
-        bb_upper REAL,
-        bb_lower REAL,
-        volatility_20 REAL,
-        volume_change_pct REAL,
-        momentum_10 REAL
+        momentum_10 REAL,
+        volume_change_pct REAL
     )
     """)
 
