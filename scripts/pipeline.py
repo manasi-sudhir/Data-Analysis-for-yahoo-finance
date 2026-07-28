@@ -1,14 +1,12 @@
 import logging
-import time
+import os
 from datetime import datetime, timedelta
 
-from src.config import DAILY_HISTORY_REFRESH_HOURS, LOG_DIR
-from src import database
-from src.fetch_data import fetch_live_snapshot, fetch_daily_history
-from src.data_cleaning import clean_intraday, clean_daily
-from src.feature_engineering import add_intraday_features, add_daily_features
-
-import os
+from scripts.config import DAILY_HISTORY_REFRESH_HOURS, LOG_DIR
+from scripts import database
+from scripts.fetch_data import fetch_live_snapshot, fetch_daily_history
+from scripts.data_cleaning import clean_intraday, clean_daily
+from scripts.feature_engineering import add_intraday_features, add_daily_features
 
 logging.basicConfig(
     level=logging.INFO,
@@ -29,7 +27,23 @@ def _should_refresh_daily_history() -> bool:
         return True
     return datetime.now() - _last_daily_refresh > timedelta(hours=DAILY_HISTORY_REFRESH_HOURS)
 
- # 2. Daily history - heavier, only refresh periodically
+
+def run_pipeline(force_daily_refresh: bool = False):
+    global _last_daily_refresh
+    database.init_db()
+
+    # 1. Live snapshot - fast, cheap, do it every pass
+    try:
+        snapshot = fetch_live_snapshot()
+        if snapshot["current_price"] is None:
+            logger.warning("Live snapshot came back with no price - market may be closed. Skipping insert.")
+        else:
+            database.insert_live_snapshot(snapshot)
+            logger.info(f"Inserted live snapshot @ {snapshot['timestamp']} price={snapshot['current_price']}")
+    except Exception as e:
+        logger.error(f"Live snapshot fetch failed: {e}")
+
+    # 2. Daily history - heavier, only refresh periodically
     if force_daily_refresh or _should_refresh_daily_history():
         try:
             daily_raw = fetch_daily_history()

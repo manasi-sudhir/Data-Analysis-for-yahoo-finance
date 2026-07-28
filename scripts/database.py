@@ -1,6 +1,6 @@
 import sqlite3
 import pandas as pd
-from src.config import DB_PATH
+from scripts.config import DB_PATH
 
 
 def get_connection():

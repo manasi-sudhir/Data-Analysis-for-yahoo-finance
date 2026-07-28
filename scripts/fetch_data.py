@@ -12,7 +12,7 @@ from datetime import datetime
 import pandas as pd
 import yfinance as yf
 
-from src.config import TICKER, DAILY_HISTORY_PERIOD
+from scripts.config import TICKER, DAILY_HISTORY_PERIOD
 
 logger = logging.getLogger("nvidia_pipeline.fetch")
 
