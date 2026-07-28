@@ -1,0 +1,42 @@
+name: Fetch NVDA Data
+
+# Runs automatically on a schedule, and lets you trigger it manually too
+# (via the "Run workflow" button on the Actions tab).
+on:
+  schedule:
+    # Every 15 minutes, 13:00-20:00 UTC, Monday-Friday.
+    # That window covers US market hours (9:30am-4:00pm ET) with a bit of
+    # buffer on both sides. Cron times are always in UTC on GitHub.
+    - cron: "*/15 13-20 * * 1-5"
+  workflow_dispatch: {}
+
+# Needed so this workflow is allowed to push the updated database file
+# back into the repo.
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run data pipeline
+        run: python -c "from scripts.pipeline import run_pipeline; run_pipeline()"
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/nvidia_stock.db logs/pipeline.log
+          git diff --staged --quiet || git commit -m "Auto-update NVDA data"
+          git push
