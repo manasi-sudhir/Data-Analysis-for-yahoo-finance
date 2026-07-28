@@ -41,25 +41,32 @@ The preprocessing stage:
 - Corrects daily records where high and low values are swapped.
 - Flags potential intraday price outliers using the IQR method.
 
-### 2.3 Feature Engineering
+### 2.3 Feature engineering
 
-The project creates analytical features from the cleaned NVIDIA stock data.
+All feature logic lives in scripts/feature_engineering.py, split into three functions by time granularity:
 
-For intraday data, the project creates:
-
-- `price_change`
-- `pct_change_from_prev_snapshot`
-- `pct_change_from_open`
-- `rolling_mean_10`
-- `day_range_pct`
-
-For daily historical data, the project creates:
-
-- `daily_return`
-- `sma_20`
-- `sma_50`
-- `momentum_10`
-- `volume_change_pct`
+add_intraday_features() - per live price check
+Feature	What it means
+price_change	Dollar change since the previous check
+pct_change_from_prev_snapshot	Percent change since the previous check
+pct_change_from_open	Percent change since the market opened today
+rolling_mean_10	Average price over the last 10 checks
+day_range_pct	Today's high-low swing as a percent of the opening price
+add_daily_features() - per trading day
+Feature	What it means
+daily_return	Percent change from the previous day's close
+sma_20	20-day moving average of the closing price
+sma_50	50-day moving average of the closing price
+momentum_10	Dollar change vs. the close 10 trading days ago
+volume_change_pct	Percent change in trading volume vs. the previous day
+generate_weekly_summary() - per trading week
+Feature	What it means
+weekly_low / weekly_high	The week's price range
+weekly_median_close	Typical closing price that week
+first_close / last_close	Price at the start vs. end of the week
+weekly_gain / weekly_gain_pct	Dollar and percent move over the week
+avg_volume	Average daily trading volume that week
+big_move_days	Count of days that week where price moved more than 3%
 
 ### 2.4 Data Analysis and Dashboard
 
