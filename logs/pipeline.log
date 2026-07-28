@@ -1,0 +1,94 @@
+2026-07-28 01:37:39,513 [INFO] nvidia_pipeline.scheduler: Starting scheduler, polling every 60s. Ctrl+C to stop.
+2026-07-28 01:37:43,484 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:37:39 price=196.50999450683594
+2026-07-28 01:37:43,577 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:37:43,705 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2174 rows, daily=499 rows
+2026-07-28 01:38:40,665 [INFO] nvidia_pipeline.scheduler: Scheduler stopped by user.
+2026-07-28 01:39:17,121 [INFO] nvidia_pipeline.scheduler: Starting scheduler, polling every 60s. Ctrl+C to stop.
+2026-07-28 01:39:17,668 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:39:17 price=196.50999450683594
+2026-07-28 01:39:17,767 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:39:17,861 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2176 rows, daily=499 rows
+2026-07-28 01:39:44,911 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:39:44 price=196.50999450683594
+2026-07-28 01:39:45,099 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:39:45,494 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2177 rows, daily=499 rows
+2026-07-28 01:40:18,282 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:40:17 price=196.50999450683594
+2026-07-28 01:40:18,617 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2178 rows, daily=499 rows
+2026-07-28 01:41:18,904 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:41:18 price=196.50999450683594
+2026-07-28 01:41:19,278 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2180 rows, daily=499 rows
+2026-07-28 01:42:19,553 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:42:19 price=196.50999450683594
+2026-07-28 01:42:19,870 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2181 rows, daily=499 rows
+2026-07-28 01:43:20,159 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:43:19 price=196.50999450683594
+2026-07-28 01:43:20,427 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2184 rows, daily=499 rows
+2026-07-28 01:44:02,261 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:44:01 price=196.50999450683594
+2026-07-28 01:44:02,462 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:44:02,866 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2185 rows, daily=499 rows
+2026-07-28 01:44:20,720 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:44:20 price=196.50999450683594
+2026-07-28 01:44:21,070 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2186 rows, daily=499 rows
+2026-07-28 01:44:46,337 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:44:46 price=196.50999450683594
+2026-07-28 01:44:46,509 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:44:46,805 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2187 rows, daily=499 rows
+2026-07-28 01:44:50,382 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:44:50 price=196.50999450683594
+2026-07-28 01:44:50,524 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:44:50,807 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2188 rows, daily=499 rows
+2026-07-28 01:45:21,267 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:45:21 price=196.50999450683594
+2026-07-28 01:45:21,437 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2189 rows, daily=499 rows
+2026-07-28 01:46:14,392 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:46:14 price=196.50999450683594
+2026-07-28 01:46:14,578 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:46:14,860 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2191 rows, daily=499 rows
+2026-07-28 01:46:19,343 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:46:19 price=196.50999450683594
+2026-07-28 01:46:19,480 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:46:19,778 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2192 rows, daily=499 rows
+2026-07-28 01:46:21,728 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:46:21 price=196.50999450683594
+2026-07-28 01:46:22,064 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2193 rows, daily=499 rows
+2026-07-28 01:46:28,466 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:46:28 price=196.50999450683594
+2026-07-28 01:46:28,649 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:46:28,953 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2194 rows, daily=499 rows
+2026-07-28 01:47:22,296 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:47:22 price=196.50999450683594
+2026-07-28 01:47:22,578 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2195 rows, daily=499 rows
+2026-07-28 01:48:22,867 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:48:22 price=196.50999450683594
+2026-07-28 01:48:23,164 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2198 rows, daily=499 rows
+2026-07-28 01:49:23,345 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:49:23 price=196.50999450683594
+2026-07-28 01:49:23,457 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2199 rows, daily=499 rows
+2026-07-28 01:49:50,415 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:49:49 price=196.50999450683594
+2026-07-28 01:49:50,615 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:49:51,049 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2200 rows, daily=499 rows
+2026-07-28 01:50:23,775 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:50:23 price=196.50999450683594
+2026-07-28 01:50:24,103 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2201 rows, daily=499 rows
+2026-07-28 01:51:11,503 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:51:10 price=196.50999450683594
+2026-07-28 01:51:11,711 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:51:12,193 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2203 rows, daily=499 rows
+2026-07-28 01:51:24,393 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:51:24 price=196.50999450683594
+2026-07-28 01:51:24,679 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2204 rows, daily=499 rows
+2026-07-28 01:52:24,923 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:52:24 price=196.50999450683594
+2026-07-28 01:52:25,029 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2205 rows, daily=499 rows
+2026-07-28 01:53:25,292 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:53:25 price=196.50999450683594
+2026-07-28 01:53:25,590 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2208 rows, daily=499 rows
+2026-07-28 01:54:25,867 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:54:25 price=196.50999450683594
+2026-07-28 01:54:26,153 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2209 rows, daily=499 rows
+2026-07-28 01:55:26,440 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:55:26 price=196.50999450683594
+2026-07-28 01:55:26,777 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2210 rows, daily=499 rows
+2026-07-28 01:56:27,011 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:56:26 price=196.50999450683594
+2026-07-28 01:56:27,131 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2212 rows, daily=499 rows
+2026-07-28 01:57:27,399 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:57:27 price=196.50999450683594
+2026-07-28 01:57:27,696 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2213 rows, daily=499 rows
+2026-07-28 01:58:26,146 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:58:25 price=196.50999450683594
+2026-07-28 01:58:26,458 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:58:26,790 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2216 rows, daily=499 rows
+2026-07-28 01:58:27,923 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:58:27 price=196.50999450683594
+2026-07-28 01:58:28,190 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2217 rows, daily=499 rows
+2026-07-28 01:58:36,115 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:58:35 price=196.50999450683594
+2026-07-28 01:58:36,279 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:58:36,556 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2218 rows, daily=499 rows
+2026-07-28 01:58:41,277 [ERROR] asyncio: Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\Samruddhi\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Samruddhi\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-07-28 01:58:54,516 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 01:58:54 price=196.50999450683594
+2026-07-28 01:58:54,697 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 01:58:54,931 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2219 rows, daily=499 rows
+2026-07-28 02:13:29,073 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-07-28 02:13:25 price=196.50999450683594
+2026-07-28 02:13:29,206 [INFO] nvidia_pipeline: Refreshed daily history: 499 rows
+2026-07-28 02:13:29,504 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2228 rows, daily=499 rows
