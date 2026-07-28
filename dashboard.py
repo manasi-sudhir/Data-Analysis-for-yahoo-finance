@@ -3,7 +3,8 @@ import time
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from plotly.subplots import make_subplots
+from plotly.subplots 
+import make_subplots
 
 from scripts import database
 from scripts.pipeline import run_pipeline
