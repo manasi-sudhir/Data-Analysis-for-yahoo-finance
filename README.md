@@ -178,35 +178,7 @@ The `clean_daily()` function:
 
 ---
 
-## 3.4 Feature Engineering
-
-**File:** `scripts/feature_engineering.py`
-
-The project contains separate feature-engineering functions for intraday and daily market data.
-
-### Intraday Features
-
-The `add_intraday_features()` function creates:
-
-- `price_change` – change in price from the previous live snapshot.
-- `pct_change_from_prev_snapshot` – percentage change from the previous snapshot.
-- `pct_change_from_open` – percentage change from the market opening price.
-- `rolling_mean_10` – average current price across the latest 10 snapshots.
-- `day_range_pct` – daily high-to-low price range as a percentage of the opening price.
-
-### Daily Features
-
-The `add_daily_features()` function creates:
-
-- `daily_return` – percentage change in closing price from the previous trading day.
-- `sma_20` – 20-day simple moving average.
-- `sma_50` – 50-day simple moving average.
-- `momentum_10` – difference between the current close and the closing price 10 trading days earlier.
-- `volume_change_pct` – percentage change in trading volume from the previous trading day.
-
----
-
-## 3.5 Pipeline Orchestration
+## 3.4 Pipeline Orchestration
 
 **File:** `scripts/pipeline.py`
 
@@ -224,7 +196,7 @@ It:
 
 ---
 
-## 3.6 Automated Scheduler
+## 3.5 Automated Scheduler
 
 **File:** `scheduler.py`
 
@@ -240,7 +212,7 @@ The scheduler continues collecting data while the Python process is running.
 
 ---
 
-## 3.7 Streamlit Dashboard
+## 3.6 Streamlit Dashboard
 
 **File:** `dashboard.py`
 
