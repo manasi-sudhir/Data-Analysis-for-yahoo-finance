@@ -305,3 +305,6 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 2026-08-05 20:05:29,742 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-08-05 20:05:29 price=219.22000122070312
 2026-08-05 20:05:29,834 [INFO] nvidia_pipeline: Refreshed daily history: 501 rows
 2026-08-05 20:05:29,884 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2378 rows, daily=507 rows
+2026-08-05 21:31:32,074 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-08-05 21:31:31 price=219.22000122070312
+2026-08-05 21:31:32,170 [INFO] nvidia_pipeline: Refreshed daily history: 501 rows
+2026-08-05 21:31:32,219 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2379 rows, daily=507 rows
