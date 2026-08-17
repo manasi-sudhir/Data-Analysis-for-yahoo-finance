@@ -461,3 +461,7 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 2026-08-14 20:54:35,388 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-08-14 20:54:34 price=225.16000366210938
 2026-08-14 20:54:35,518 [INFO] nvidia_pipeline: Refreshed daily history: 501 rows
 2026-08-14 20:54:35,570 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2430 rows, daily=514 rows
+2026-08-17 13:34:31,390 [ERROR] yfinance: $NVDA: possibly delisted; no price data found  (period=5d)
+2026-08-17 13:34:32,468 [INFO] nvidia_pipeline: Inserted live snapshot @ 2026-08-17 13:34:21 price=225.62989807128906
+2026-08-17 13:34:37,915 [INFO] nvidia_pipeline: Refreshed daily history: 500 rows
+2026-08-17 13:34:37,971 [INFO] nvidia_pipeline: Feature tables rebuilt: intraday=2431 rows, daily=515 rows
